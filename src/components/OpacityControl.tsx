@@ -27,9 +27,7 @@ export default function OpacityControl({
           step="0.01"
           value={opacity}
           onChange={(e) => setOpacity(parseFloat(e.target.value))}
-          // orient="vertical"
           style={{
-            // marginLeft: "10px",
             width: "150px",
           }}
         />

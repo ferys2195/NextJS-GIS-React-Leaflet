@@ -10,6 +10,16 @@ const desaLuwukRanggan = coordinates.slice(46, 49);
 
 const data = [
   {
+    title: "Desa Patai",
+    color: "#9FE2BF",
+    coordinates: desaPatai,
+  },
+  {
+    title: "Desa Luwuk Ranggan",
+    color: "#40E0D0",
+    coordinates: desaLuwukRanggan,
+  },
+  {
     title: "Desa Camba",
     color: "#DFFF00",
     coordinates: desaCamba,
@@ -28,16 +38,6 @@ const data = [
     title: "Desa Rasau Tumbuh",
     color: "#DE3163",
     coordinates: desaRasauTumbuh,
-  },
-  {
-    title: "Desa Patai",
-    color: "#9FE2BF",
-    coordinates: desaPatai,
-  },
-  {
-    title: "Desa Luwuk Ranggan",
-    color: "#40E0D0",
-    coordinates: desaLuwukRanggan,
   },
 ];
 
