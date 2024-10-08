@@ -8,11 +8,12 @@ import {
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import MapLayerControl from "./MapLayerControl";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MaskingOutbox from "./MaskingOutbox";
 import OpacityControl from "./OpacityControl";
 import MapLegend from "./MapLegend";
 import MenuDrawer from "./MenuDrawer/MenuDrawer";
+import BidangTanah from "./BidangTanah";
 
 const POSITION_CLASSES = {
   bottomleft: "leaflet-bottom leaflet-left",
@@ -24,6 +25,7 @@ const POSITION_CLASSES = {
 const MapApp = () => {
   const [opacity, setOpacity] = useState<number>(0.5);
   const [zoomLevel, setZoomLevel] = useState(15);
+  const [geoJsonData, setGeoJsonData] = useState(null)
 
   const MapZoomListener = () => {
     useMapEvents({
@@ -33,6 +35,15 @@ const MapApp = () => {
     });
     return null;
   };
+
+  useEffect(()=>{
+   const getTanah = async ()=> {
+      const response = await fetch('http://localhost:8000/api/tanah')
+      const data = await response.json()
+      setGeoJsonData(data)
+    }
+    getTanah()
+  },[])
 
   return (
     <>
@@ -48,6 +59,7 @@ const MapApp = () => {
         <MapLayerControl opacity={opacity} setOpacity={setOpacity} />
         <MaskingOutbox opacity={opacity} />
         <MapLegend />
+        {geoJsonData && <BidangTanah geoJsonData={geoJsonData}/>}
       </MapContainer>
       <OpacityControl opacity={opacity} setOpacity={setOpacity} />
       <MenuDrawer />

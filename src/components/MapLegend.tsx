@@ -11,7 +11,7 @@ export default function MapLegend() {
         <hr className="mb-2" />
         {batasDesa().map(({ title, color }) => {
           return (
-            <div className="flex items-center gap-3">
+            <div key={title} className="flex items-center gap-3">
               <span
                 className={`w-5 h-2`}
                 style={{ backgroundColor: color }}
